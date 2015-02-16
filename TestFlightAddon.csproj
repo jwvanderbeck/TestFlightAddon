@@ -39,11 +39,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TFHybridInterfaceExample.cs" />
-    <Compile Include="TFReflectionInterfaceExample.cs" />
+    <Compile Include="TFInteropExample.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="TestFlightFailure_SimpleExample.cs" />
+    <None Include="TFHybridInterfaceExample.cs" />
+    <None Include="TFReflectionInterfaceExample.cs" />
   </ItemGroup>
 </Project>
