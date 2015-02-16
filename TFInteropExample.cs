@@ -8,13 +8,20 @@ namespace TestFlightAddon
     public class TFInteropExample : PartModule
     {
         // TestFlight Interop
-        private Type tfInterop;
+        private Type tfInterface = null;
         private BindingFlags tfBindingFlags = BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.Static;
 
         public override void OnAwake()
         {
             base.OnAwake();
             Debug.Log("TFInteropExample: OnAwake");
+
+            tfInterface = Type.GetType("TestFlightCore.TestFlightInterface, TestFlightCore", false);
+
+            if (tfInterface != null)
+            {
+                tfInterface.InvokeMember("AddInteropValue", tfBindingFlags, null, null, new System.Object[] { this.part, "tank_type", "default", "TFInteropExample" });
+            }
         }
 
         public override void OnFixedUpdate()
@@ -26,6 +33,13 @@ namespace TestFlightAddon
         {
             base.OnLoad(node);
             Debug.Log("TFInteropExample: OnLoad");
+
+            tfInterface = Type.GetType("TestFlightCore.TestFlightInterface, TestFlightCore", false);
+
+            if (tfInterface != null)
+            {
+                tfInterface.InvokeMember("AddInteropValue", tfBindingFlags, null, null, new System.Object[] { this.part, "tank_type", "default", "TFInteropExample" });
+            }
         }
 
         public override void OnStart(StartState state)
@@ -38,18 +52,15 @@ namespace TestFlightAddon
             base.OnUpdate();
         }
 
-        public void Awake()
-        {
-            Debug.Log("TFInteropExample: Awake");
-        }
-
         public void Start()
         {
             Debug.Log("TFInteropExample: Start");
-            if (this.part.Modules.Contains("TestFlightInterop"))
+
+            tfInterface = Type.GetType("TestFlightCore.TestFlightInterface, TestFlightCore", false);
+
+            if (tfInterface != null)
             {
-                tfInterop = this.part.Modules["TestFlightInterop"].GetType();
-                tfInterop.InvokeMember("AddInteropValue", tfBindingFlags, null, null, new System.Object[] { "tank_type", "default", "TFInteropExample" });
+                tfInterface.InvokeMember("AddInteropValue", tfBindingFlags, null, null, new System.Object[] { this.part, "tank_type", "default", "TFInteropExample" });
             }
         }
 
