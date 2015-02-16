@@ -20,6 +20,7 @@ namespace TestFlightAddon
 
             if (tfInterface != null)
             {
+                Debug.Log("TFInteropExample: Setting interop value");
                 tfInterface.InvokeMember("AddInteropValue", tfBindingFlags, null, null, new System.Object[] { this.part, "tank_type", "default", "TFInteropExample" });
             }
         }
@@ -38,6 +39,7 @@ namespace TestFlightAddon
 
             if (tfInterface != null)
             {
+                Debug.Log("TFInteropExample: Setting interop value");
                 tfInterface.InvokeMember("AddInteropValue", tfBindingFlags, null, null, new System.Object[] { this.part, "tank_type", "default", "TFInteropExample" });
             }
         }
@@ -60,6 +62,7 @@ namespace TestFlightAddon
 
             if (tfInterface != null)
             {
+                Debug.Log("TFInteropExample: Setting interop value");
                 tfInterface.InvokeMember("AddInteropValue", tfBindingFlags, null, null, new System.Object[] { this.part, "tank_type", "default", "TFInteropExample" });
             }
         }
